@@ -17,23 +17,37 @@ class Home extends StatelessWidget {
         backgroundColor: Colors.red[600],
         centerTitle: true,
       ),
-      body: Center(
-        // child: Image.asset('assets/balloons.jpg'),
-        // child: Image.network('https://images.unsplash.com/photo-1644072980122-22f4365d4519?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80'),
-        // child: TextButton.icon(
-        //     onPressed: () {},
-        //     icon: Icon(
-        //       Icons.mail
-        //     ),
-        //     label: Text('mail me'),
-        // ),
-        child: IconButton(
-          onPressed: () {
-            print('you clicked me!!');
-          },
-          icon: Icon(Icons.alternate_email),
-          color: Colors.amber,
-        ),
+      body: Row(
+        children: [
+          Expanded(
+            flex: 3,
+              child: Image.asset('assets/balloons.jpg')
+          ),
+          Expanded(
+            flex: 2,
+            child: Container(
+              padding: EdgeInsets.all(30.0),
+              color: Colors.cyan,
+              child: Text('1'),
+            ),
+          ),
+          Expanded(
+            flex: 2,
+            child: Container(
+              padding: EdgeInsets.all(30.0),
+              color: Colors.pinkAccent,
+              child: Text('2'),
+            ),
+          ),
+          Expanded(
+            flex: 1,
+            child: Container(
+              padding: EdgeInsets.all(30.0),
+              color: Colors.amber,
+              child: Text('3'),
+            ),
+          ),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
