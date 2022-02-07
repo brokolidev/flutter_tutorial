@@ -2,58 +2,97 @@ import 'package:flutter/material.dart';
 
 void main() {
   runApp(const MaterialApp(
-    home: Home(),
+    home: NinjaCard(),
   ));
 }
 
-class Home extends StatelessWidget {
-  const Home({Key? key}) : super(key: key);
+class NinjaCard extends StatelessWidget {
+  const NinjaCard({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey[900],
       appBar: AppBar(
-        title: Text('Home Screen'),
-        backgroundColor: Colors.red[600],
+        title: Text('ID Card'),
         centerTitle: true,
+        backgroundColor: Colors.grey[850],
+        elevation: 0,
       ),
-      body: Row(
-        children: [
-          Expanded(
-            flex: 3,
-              child: Image.asset('assets/balloons.jpg')
-          ),
-          Expanded(
-            flex: 2,
-            child: Container(
-              padding: EdgeInsets.all(30.0),
-              color: Colors.cyan,
-              child: Text('1'),
+      body: Padding(
+        padding: EdgeInsets.fromLTRB(30.0, 40.0, 30.0, 0.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Center(
+              child: CircleAvatar(
+                backgroundImage: AssetImage('assets/balloons.jpg'),
+                radius: 50.0,
+              ),
             ),
-          ),
-          Expanded(
-            flex: 2,
-            child: Container(
-              padding: EdgeInsets.all(30.0),
-              color: Colors.pinkAccent,
-              child: Text('2'),
+            Divider(
+              height: 60.0,
+              color: Colors.grey[800],
             ),
-          ),
-          Expanded(
-            flex: 1,
-            child: Container(
-              padding: EdgeInsets.all(30.0),
-              color: Colors.amber,
-              child: Text('3'),
+            Text(
+              'NAME',
+              style: TextStyle(
+                color: Colors.grey,
+                letterSpacing: 2.0,
+                fontFamily: 'NotoSansKR',
+              ),
             ),
-          ),
-        ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          print('test!!!');
-        },
-        child: Text('Click'),
+            SizedBox(height: 10.0),
+            Text(
+              '최현승',
+              style: TextStyle(
+                color: Colors.amberAccent[200],
+                letterSpacing: 2.0,
+                fontFamily: 'NotoSansKR',
+                fontWeight: FontWeight.bold,
+                fontSize: 28.0,
+              ),
+            ),
+            SizedBox(height: 30.0),
+            Text(
+              'CURRENT AGE',
+              style: TextStyle(
+                color: Colors.grey,
+                letterSpacing: 2.0,
+                fontFamily: 'NotoSansKR',
+              ),
+            ),
+            SizedBox(height: 10.0),
+            Text(
+              '28',
+              style: TextStyle(
+                color: Colors.amberAccent[200],
+                letterSpacing: 2.0,
+                fontFamily: 'NotoSansKR',
+                fontWeight: FontWeight.bold,
+                fontSize: 28.0,
+              ),
+            ),
+            SizedBox(height: 30.0),
+            Row(
+              children: [
+                Icon(
+                  Icons.email,
+                  color: Colors.grey[400],
+                ),
+                SizedBox(width: 10.0),
+                Text(
+                  'bocalist@gmail.com',
+                  style: TextStyle(
+                    color: Colors.grey[400],
+                    fontSize: 18.0,
+                    letterSpacing: 1.0,
+                  ),
+                )
+              ],
+            )
+          ],
+        ),
       ),
     );
   }
