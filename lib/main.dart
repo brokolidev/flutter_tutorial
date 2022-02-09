@@ -1,115 +1,46 @@
 import 'package:flutter/material.dart';
+import 'member.dart';
+import 'member_card.dart';
 
 void main() {
-  runApp(const MaterialApp(
-    home: NinjaCard(),
+  runApp(MaterialApp(
+    home: QuoteList(),
   ));
 }
 
-class NinjaCard extends StatefulWidget {
-  const NinjaCard({Key? key}) : super(key: key);
+class QuoteList extends StatefulWidget {
+  const QuoteList({Key? key}) : super(key: key);
 
   @override
-  State<NinjaCard> createState() => _NinjaCardState();
+  _QuoteListState createState() => _QuoteListState();
 }
 
-class _NinjaCardState extends State<NinjaCard> {
+class _QuoteListState extends State<QuoteList> {
 
-  int age = 0;
+  List<Member> members = [
+    Member(name: 'Lee', age: 37, sex: 'm'),
+    Member(name: 'Choi', age: 34, sex: 'm'),
+    Member(name: 'Jung', age: 27, sex: 'f'),
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[900],
+      backgroundColor: Colors.grey[200],
       appBar: AppBar(
-        title: Text('ID Card'),
+        title: Text('리스트 출력'),
         centerTitle: true,
-        backgroundColor: Colors.grey[850],
-        elevation: 0,
+        backgroundColor: Colors.redAccent,
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          setState(() {
-            age++;
-          });
-        },
-        child: Icon(Icons.add),
-        backgroundColor: Colors.grey[800],
-      ),
-      body: Padding(
-        padding: EdgeInsets.fromLTRB(30.0, 40.0, 30.0, 0.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Center(
-              child: CircleAvatar(
-                backgroundImage: AssetImage('assets/balloons.jpg'),
-                radius: 50.0,
-              ),
-            ),
-            Divider(
-              height: 60.0,
-              color: Colors.grey[800],
-            ),
-            Text(
-              'NAME',
-              style: TextStyle(
-                color: Colors.grey,
-                letterSpacing: 2.0,
-                fontFamily: 'NotoSansKR',
-              ),
-            ),
-            SizedBox(height: 10.0),
-            Text(
-              '최현승',
-              style: TextStyle(
-                color: Colors.amberAccent[200],
-                letterSpacing: 2.0,
-                fontFamily: 'NotoSansKR',
-                fontWeight: FontWeight.bold,
-                fontSize: 28.0,
-              ),
-            ),
-            SizedBox(height: 30.0),
-            Text(
-              'CURRENT AGE',
-              style: TextStyle(
-                color: Colors.grey,
-                letterSpacing: 2.0,
-                fontFamily: 'NotoSansKR',
-              ),
-            ),
-            SizedBox(height: 10.0),
-            Text(
-              '$age',
-              style: TextStyle(
-                color: Colors.amberAccent[200],
-                letterSpacing: 2.0,
-                fontFamily: 'NotoSansKR',
-                fontWeight: FontWeight.bold,
-                fontSize: 28.0,
-              ),
-            ),
-            SizedBox(height: 30.0),
-            Row(
-              children: [
-                Icon(
-                  Icons.email,
-                  color: Colors.grey[400],
-                ),
-                SizedBox(width: 10.0),
-                Text(
-                  'bocalist@gmail.com',
-                  style: TextStyle(
-                    color: Colors.grey[400],
-                    fontSize: 18.0,
-                    letterSpacing: 1.0,
-                  ),
-                )
-              ],
-            )
-          ],
-        ),
+      body: Column(
+        children: members.map((member) => MemberCard(
+          member: member,
+          delete: () {
+            setState(() {
+              members.remove(member);
+            });
+          }
+        )).toList(),
       ),
     );
   }
