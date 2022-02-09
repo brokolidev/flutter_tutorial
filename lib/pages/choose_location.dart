@@ -9,29 +9,6 @@ class ChooseLocation extends StatefulWidget {
 
 class _ChooseLocationState extends State<ChooseLocation> {
 
-  void getData() async {
-
-    // 유저네임 가져오기
-    await Future.delayed(Duration(seconds: 3), () {
-      print('사용자명은 코코가 입니다!');
-    });
-
-    // API 키 가져오기
-    await Future.delayed(Duration(seconds: 2), () {
-      print('API Key: 1234!!!!@@@@####!');
-    });
-
-    print('초기화');
-
-  }
-
-  @override
-  void initState() {
-    super.initState();
-
-    getData();
-  }
-
   @override
   Widget build(BuildContext context) {
 
