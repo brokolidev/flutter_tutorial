@@ -9,18 +9,31 @@ class ChooseLocation extends StatefulWidget {
 
 class _ChooseLocationState extends State<ChooseLocation> {
 
-  int counter = 0;
+  void getData() async {
+
+    // 유저네임 가져오기
+    await Future.delayed(Duration(seconds: 3), () {
+      print('사용자명은 코코가 입니다!');
+    });
+
+    // API 키 가져오기
+    await Future.delayed(Duration(seconds: 2), () {
+      print('API Key: 1234!!!!@@@@####!');
+    });
+
+    print('초기화');
+
+  }
 
   @override
   void initState() {
     super.initState();
-    print('initState');
+
+    getData();
   }
 
   @override
   Widget build(BuildContext context) {
-
-    print('build');
 
     return Scaffold(
       backgroundColor: Colors.grey[200],
@@ -30,14 +43,7 @@ class _ChooseLocationState extends State<ChooseLocation> {
         centerTitle: true,
         elevation: 0,
       ),
-      body: RaisedButton(
-        onPressed: () {
-          setState(() {
-            counter ++;
-          });
-        },
-        child: Text('counter is $counter'),
-      ),
+      body:Text('Choose a Location!'),
     );
   }
 }
