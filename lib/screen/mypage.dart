@@ -5,6 +5,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tutorial/models/user.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class MyPage extends StatelessWidget {
   const MyPage({super.key});
@@ -13,7 +14,7 @@ class MyPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
       create: (context) => UserModel(),
-      child: MyPageScreen(),
+      child: const MyPageScreen(),
     );
   }
 }
@@ -33,8 +34,12 @@ class MyPageScreen extends StatelessWidget {
         ElevatedButton(
             onPressed: () {
               user.id = 12345678;
+              user.apiKey = '12345678!!!!';
+              user.getApiKeyFronSharedPrefs().then((val) {
+                print("설정된 API 키는 : ${val} 입니다.");
+              });
             },
-            child: Text('Click me!'))
+            child: const Text('Click me!'))
       ],
     );
   }

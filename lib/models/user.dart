@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class UserModel extends ChangeNotifier {
   int? _id;
@@ -13,5 +14,23 @@ class UserModel extends ChangeNotifier {
   set name(val) {
     _name = val;
     notifyListeners();
+  }
+
+  String? _apiKey;
+  get apiKey => _apiKey;
+  set apiKey(val) {
+    _apiKey = val;
+    setApiKeyToSharedPrefs(val);
+    notifyListeners();
+  }
+
+  Future<void> setApiKeyToSharedPrefs(String key) async {
+    final prefs = await SharedPreferences.getInstance();
+    prefs.setString('apiKey', key);
+  }
+
+  Future<String?> getApiKeyFronSharedPrefs() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getString('apiKey');
   }
 }
